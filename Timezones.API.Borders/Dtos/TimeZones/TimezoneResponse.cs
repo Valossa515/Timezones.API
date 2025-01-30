@@ -1,4 +1,7 @@
-﻿namespace Timezones.API.Borders.Dtos.TimeZones
+﻿using System.Text.Json.Serialization;
+using Timezones.API.Shared.Converters;
+
+namespace Timezones.API.Borders.Dtos.TimeZones
 {
     public class TimezoneResponse
     {

@@ -1,7 +1,12 @@
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json;
 using Timezones.API.Borders.Handlers;
 using Timezones.API.Handlers.TimeZones;
+using Timezones.API.Shared.Models;
 using Timezones.API.Shared.Converters;
+using Newtonsoft.Json.Converters;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,10 +31,20 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
+TelemetryConfiguration teleConfig = TelemetryConfiguration.CreateDefault();
+
+builder.Services.AddHttpContextAccessor();
+
+// Registra os serviços necessários
+builder.Services.AddSingleton<IActionResultConverter, ActionResultConverter>();
+builder.Services.AddSingleton(new TelemetryClient(teleConfig));
+
 builder.Services.AddControllers()
-    .AddJsonOptions(options =>
+    .AddNewtonsoftJson(options =>
     {
-        options.JsonSerializerOptions.Converters.Add(new JsonDateTimeConverter("yyyy-MM-dd HH:mm:ss"));
+        options.SerializerSettings.Converters.Add(new StringEnumConverter());
+        options.SerializerSettings.Converters.Add(new JsonDateTimeConverter());
+        options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
     });
 
 // Registra os Handlers
@@ -51,4 +66,4 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
-app.Run();
+await app.RunAsync();
