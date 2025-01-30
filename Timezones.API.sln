@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35707.178 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timezones.API", "Timezones.API\Timezones.API.csproj", "{EFF7C5B2-01C4-4180-9C3C-A9F7F39A6961}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timezones.API.Borders", "Timezones.API.Borders\Timezones.API.Borders.csproj", "{A2039D69-04A5-427E-8A5E-EF5196FE6591}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timezones.API.Handlers", "Timezones.API.Handlers\Timezones.API.Handlers.csproj", "{46EA1844-9CFB-4024-933B-6E19F6A86601}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timezones.API.Shared", "Timezones.API.Shared\Timezones.API.Shared.csproj", "{722FF921-329C-4E95-B590-ED5506651929}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EFF7C5B2-01C4-4180-9C3C-A9F7F39A6961}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFF7C5B2-01C4-4180-9C3C-A9F7F39A6961}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFF7C5B2-01C4-4180-9C3C-A9F7F39A6961}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFF7C5B2-01C4-4180-9C3C-A9F7F39A6961}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2039D69-04A5-427E-8A5E-EF5196FE6591}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2039D69-04A5-427E-8A5E-EF5196FE6591}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2039D69-04A5-427E-8A5E-EF5196FE6591}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2039D69-04A5-427E-8A5E-EF5196FE6591}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46EA1844-9CFB-4024-933B-6E19F6A86601}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46EA1844-9CFB-4024-933B-6E19F6A86601}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46EA1844-9CFB-4024-933B-6E19F6A86601}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46EA1844-9CFB-4024-933B-6E19F6A86601}.Release|Any CPU.Build.0 = Release|Any CPU
+		{722FF921-329C-4E95-B590-ED5506651929}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{722FF921-329C-4E95-B590-ED5506651929}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{722FF921-329C-4E95-B590-ED5506651929}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{722FF921-329C-4E95-B590-ED5506651929}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
