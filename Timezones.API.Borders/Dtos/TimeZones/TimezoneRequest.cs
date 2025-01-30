@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Timezones.API.Borders.Dtos.TimeZones
 {
-    public record TimezoneRequest(string TimezoneId)
+    public record TimezoneRequest(string? TimezoneId)
     {
-        public string TimezoneId { get; init; } = TimezoneId;
+        public string? TimezoneId { get; init; } = TimezoneId;
     }
 }
