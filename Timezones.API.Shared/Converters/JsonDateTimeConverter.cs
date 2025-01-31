@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 
+
 namespace Timezones.API.Shared.Converters
 {
     public class JsonDateTimeConverter : JsonConverter<DateTime>

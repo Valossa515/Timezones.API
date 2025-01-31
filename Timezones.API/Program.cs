@@ -49,6 +49,7 @@ builder.Services.AddControllers()
 
 // Registra os Handlers
 builder.Services.AddScoped<IGetTimezonesHandler, GetTimezonesHandler>();
+builder.Services.AddScoped<IConvertTimezoneHandler, ConvertTimezoneHandler>();
 
 var app = builder.Build();
 

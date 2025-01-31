@@ -53,7 +53,7 @@ namespace Timezones.API.Shared.Models
         ActionResult BuildResult(object data, int statusCode)
         {
             if (statusCode == (int)HttpStatusCode.InternalServerError)
-                Log.Error($"[ERROR] {_path} ({{@data}})", data);
+                Log.Error("[ERROR] {Path} ({@Data})", _path, data);
 
             var result = new JsonResult(data)
             {
@@ -62,14 +62,15 @@ namespace Timezones.API.Shared.Models
                 {
                     NullValueHandling = NullValueHandling.Ignore,
                     Converters = new List<JsonConverter>
-            {
-                new DecimalFormatConverterHelper(),
-                new TrimmingJsonConverterHelper(),
-                new StringEnumConverter(),
-                new JsonDateTimeConverter()
-             }
-                }};
-            result.StatusCode = (int)statusCode;
+                        {
+                            new DecimalFormatConverterHelper(),
+                            new TrimmingJsonConverterHelper(),
+                            new StringEnumConverter(),
+                            new JsonDateTimeConverter()
+                         }
+                }
+            };
+            result.StatusCode = statusCode;
             return result;
         }
     }

@@ -11,13 +11,16 @@ namespace Timezones.API.Controllers
     [ApiController]
     public class TimezonesController : ControllerBase
     {
-        private readonly IGetTimezonesHandler _handler;
+        private readonly IGetTimezonesHandler _getTimezonesHandler;
+        private readonly IConvertTimezoneHandler _convertTimezoneHandler;
         private readonly IActionResultConverter _actionResultConverter;
 
-        public TimezonesController(IGetTimezonesHandler handler,
+        public TimezonesController(IGetTimezonesHandler getTimezonesHandler,
+            IConvertTimezoneHandler convertTimezoneHandler,
             IActionResultConverter actionResultConverter)
         {
-            _handler = handler;
+            _getTimezonesHandler = getTimezonesHandler;
+            _convertTimezoneHandler = convertTimezoneHandler;
             _actionResultConverter = actionResultConverter;
         }
 
@@ -28,7 +31,17 @@ namespace Timezones.API.Controllers
         public async Task<IActionResult> GetTimezones([FromQuery] string? timezoneId)
         {
             var request = new TimezoneRequest(timezoneId);
-            var response = await _handler.Execute(request);
+            var response = await _getTimezonesHandler.Execute(request);
+            return _actionResultConverter.Convert(response);
+        }
+
+        [HttpPost("convert")]
+        [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(HandlerResponse<ConvertTimezoneResponse>))]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest, Type = typeof(HandlerResponse<ConvertTimezoneResponse>))]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError, Type = typeof(HandlerResponse<ConvertTimezoneResponse>))]
+        public async Task<IActionResult> ConvertTimezone([FromBody] ConvertTimezoneRequest request)
+        {
+            var response = await _convertTimezoneHandler.Execute(request);
             return _actionResultConverter.Convert(response);
         }
     }
